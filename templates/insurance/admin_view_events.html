@@ -1,0 +1,44 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Pojistné události</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Poř. číslo</th>
+            <th> Zákazník</th>
+            <th> Pojištění</th>
+            <th> Komentář klienta</th>
+            <th> Odpověď poradce</th>
+            <th> Poslední reakce</th>
+            <th> Stav</th>
+            <th> Detal</th>
+            <th> Možnosti</th>
+          </tr>
+        </thead>
+        {% for t in events %}
+        <tr>
+          <td> {{ forloop.counter }}</td>
+          <td> {{t.customer.get_name}}</td>
+          <td> {{t.policy}}</td>
+          <td> {{t.description}}</td>
+          <td> {{t.admin_comment }}</td>
+          <td> {{t.creation_date}}</td>
+          <td> {{t.status}}</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'event-detail-view' t.id  %}"><span class="glyphicon glyphicon-search"></span></a></td>
+          <td class="text-right">
+            <button class="btn btn-primary badge-pill" style="width: 100px;"><a style="text-decoration: none;color: white;" href="{% url 'accept-event' t.id  %}">Přijmout</a> </button>
+            <button class="btn btn-danger badge-pill" style="width: 90px;"><a style="text-decoration: none;color: white;" href="{% url 'close-event' t.id  %}">Uzavřít</a> </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

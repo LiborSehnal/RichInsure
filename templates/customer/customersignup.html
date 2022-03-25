@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+</head>
+
+<body>
+  {% include "insurance/navbar.html" %}
+<div class="loginform">
+  <h3>REGISTRACE ZÁKAZNÍKA</h3>
+  <form method="POST" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username">Uživatelské jméno</label>
+        {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Heslo</label>
+        {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="first_name">Jméno</label>
+        {% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="last_name">Příjmení</label>
+        {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="mobile">Telefon</label>
+        {% render_field customerForm.mobile|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="address">Adresa</label>
+        {% render_field customerForm.address|attr:'required:true'  class="form-control" placeholder="" %}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="profile_pic">Profilový obrázek</label>
+        {% render_field customerForm.profile_pic|attr:'required:false' class="form-control" placeholder="" %}
+      </div>
+      <div class="form-group col-md-6">
+        <label for="profile_pic">Email</label>
+        {% render_field customerForm.mail|attr:'required:false' class="form-control" placeholder="" %}
+      </div>
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Registrovat</button>
+  </form>
+
+</div>
+
+
+</body>
+
+</html>

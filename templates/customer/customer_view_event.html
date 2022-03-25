@@ -1,0 +1,37 @@
+{% extends 'customer/customerbase.html' %}
+{% block content %}
+{%load static%}
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Přehled pojistných událostí</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <a class="btn btn-primary" href="customer-event-add" role="button">Nová událost</a>
+        <tr>
+          <th>Poř. číslo</th>
+          <th>Druh pojištění</th>
+          <th>Komentář</th>
+          <th>Odpověď poradce</th>
+          <th> Datum dotazu</th>
+          <th>Stav události</th>
+        </tr>
+      </thead>
+      {% for t in events %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{ t.policy }}</td>
+        <td> {{t.description}}</td>
+        <td>{{t.admin_comment}}</td>
+        <td>{{t.creation_date}}</td>
+        <td>{{t.status}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+{% endblock content %}

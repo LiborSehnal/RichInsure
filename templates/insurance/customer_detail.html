@@ -1,0 +1,61 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Detail zákazníka</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <td>Jméno</td>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+          </tr>
+          <tr>
+            <td>Adresa</td>
+            <td>{{ customers.address }}</td>
+          </tr>
+          <tr>
+            <td>Telefon</td>
+            <td>{{ customers.mobile }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ customers.mail }}</td>
+          </tr>
+      </table>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <br>
+          <tr>
+            <td>Produkty</td>
+          </tr>
+          <tr>
+            <th>poř. číslo</th>
+            <th>Jméno pojištění</th>
+            <th> Pojistná částka</th>
+            <th> Platba</th>
+            <th> Datum vzniku</th>
+            <th> Upravit</th>
+            <th> Smazat</th>
+        </thead>
+        {% for t in policy %}
+        <tr>
+          <td> {{ forloop.counter }}</td>
+          <td> {{t.Policy}}</td>
+          <td> {{t.sum_assurance}}</td>
+          <td> {{t.premium}}</td>
+          <td>{{t.creation_date}}</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'update-customer-policy' t.id  %}"><span class="glyphicon glyphicon-retweet"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'delete-user-policy' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br>
+      <h6>Měsíční platba celkem: {{ totalsum }} Kč</h6>
+    </div>
+  </div>
+</div>
+{% endblock content %}

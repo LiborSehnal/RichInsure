@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Ubuntu&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+  <section>
+    <input type="checkbox" id="check">
+    <!--HEADER-->
+    <header style="padding-top: 0px;">
+      <label for="check">
+        <i style="" class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>RI MANAGEMENT - admin</h3>
+      </div>
+      <div class="right_area">
+        <a href="/logout" class="logout_btn">Odhlásit</a>
+      </div>
+    </header>
+  </section>
+  <!--HEADER END-->
+
+  <!--SIDEBAR START-->
+  <div class="sidebar" style="
+    margin-top: 50px">
+    <center>
+      <img src="{% static "image/admin.jpeg" %}" class="profile_image" alt="">
+      <h4>Admin</h4>
+    </center>
+    <a href="/admin-dashboard"><i class="fas fa-tachometer-alt"></i><span>Nástěnka</span></a>
+    <a href="/admin-view-customer"><i class="fas fa-users"></i><span>Klienti</span></a>
+    <a href="/admin-view-category"><i class="fas fa-list-alt"></i><span>Kategorie - správa</span></a>
+    <a href="/admin-view-policy"><i class="fab fa-product-hunt"></i><span>Produkty - správa</span></a>
+    <a href="/admin-question"><i class="fas fa-question-circle"></i><span>Otázky</span></a>
+    <a href="/view-stats"><i class="fas fa-list-alt"></i><span>Statistiky</span></a>
+  </div>
+  <!--SIDEBAR END-->
+
+  <!--CONTENT START-->
+  <div class="content">
+    <br>
+    {% block content %}
+
+    {% endblock content %}
+    <br>
+  </div>
+  <!--CONTENT END-->
+</body>
+
+</html>

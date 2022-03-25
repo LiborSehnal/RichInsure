@@ -1,0 +1,35 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Statistiky</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <a class="btn btn-primary" href="generate-clients" role="button">Export - seznam klientů</a>
+            <a class="btn btn-primary" href="generate-stats" role="button">Export - statistiky</a>
+            <th>Klientů celkem</th>
+            <th>Mesíční pojistné celkem</th>
+            <th>Nabízených produktů</th>
+            <th>Sjednaných produktů</th>
+            <th>Počet poj. událostí celkem</th>
+            <th>Průměrně produktů/klient</th>
+          </tr>
+        </thead>
+        <tr>
+          <td> {{total_user}}</td>
+          <td> {{total_premium_number}}</td>
+          <td>{{total_policy}}</td>
+          <td>{{total_sold_policy}}</td>
+          <td>{{total_events }}</td>
+          <td>{{average_products_customer}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

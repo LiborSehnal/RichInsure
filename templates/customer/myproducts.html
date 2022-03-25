@@ -1,0 +1,38 @@
+{% extends 'customer/customerbase.html' %}
+{% block content %}
+{%load static%}
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Sjednané produkty</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Poř. číslo</th>
+          <th>Produkt</th>
+          <th>Pojistné plnění</th>
+          <th>Měsíční platba</th>
+          <th> Datum vzniku</th>
+
+        </tr>
+      </thead>
+      {% for t in policies %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{t.Policy}}</td>
+        <td> {{t.sum_assurance}}</td>
+        <td> {{t.premium}}</td>
+        <td> {{t.creation_date}}</td>
+      </tr>
+      {% endfor %}
+      <br>
+    </table>
+    <br>
+    <h6>Měsíční platba celkem: {{ totalsum }} Kč</h6>
+  </div>
+</div>
+
+
+{% endblock content %}

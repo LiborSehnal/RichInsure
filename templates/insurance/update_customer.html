@@ -1,0 +1,35 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+</head>
+
+<div class="inpage_block">
+  <h3 style="text-align:center;">UPRAVIT ÚDAJE</h3>
+  <div>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+      <label for="first_name">Jméno</label>
+      {% render_field userForm.first_name class="form-control" placeholder="" %}
+      <label for="last_name">Príjmení</label>
+      {% render_field userForm.last_name class="form-control" placeholder="" %}
+      <label for="mobile">Telefon</label>
+      {% render_field customerForm.mobile class="form-control" placeholder="" %}
+      <label for="mail">email</label>
+      {% render_field customerForm.mail class="form-control" placeholder="" %}
+      <label for="address">Adresa</label>
+      {% render_field customerForm.address class="form-control" placeholder="" %}
+      <label for="username">Přezdívka</label>
+      {% render_field userForm.username class="form-control" placeholder="" %}
+      <label for="password">Heslo</label>
+      {% render_field userForm.password class="form-control" placeholder="" %} <br><br>
+
+  
+      <input type="submit" value="Update">
+    </form>
+  </div>
+</div>
+{% endblock content %}

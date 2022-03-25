@@ -1,0 +1,18 @@
+{% extends 'insurance/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="inpage_block">
+  <h2 style="text-align:center; color:#0D1B4C;">Přidat kategorii</h2>
+  <form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="course_name">Jméno kategorie</label>
+      {% render_field categoryForm.category_name class="form-control" placeholder="" %}
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">Přidat</button>
+  </form>
+</div>
+
+{% endblock content %}

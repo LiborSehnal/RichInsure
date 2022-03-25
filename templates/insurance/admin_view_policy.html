@@ -1,0 +1,42 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Přehled nabízených produktů</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <a class="btn btn-primary" href="admin-add-policy" role="button">Nový produkt</a>
+            <th>Poř. číslo</th>
+            <th> Jméno pojištění</th>
+            <th> Kategorie</th>
+            <th> Pojistná částka</th>
+            <th> Platba</th>
+            <th> Datum vytvoření</th>
+            <th>Detail</th>
+            <th>Update</th>
+            <th>Smazat</th>
+          </tr>
+        </thead>
+        {% for t in policies %}
+        <tr>
+          <td> {{ forloop.counter }}</td>
+          <td> {{t.policy_name}}</td>
+          <td> {{t.category}}</td>
+          <td> {{t.sum_assurance}}</td>
+          <td> {{t.premium}}</td>
+          <td>{{t.creation_date}}</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'policy-detail' t.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'update-policy' t.id  %}"><span class="glyphicon glyphicon-retweet"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'delete-policy' t.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

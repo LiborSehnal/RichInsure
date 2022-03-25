@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Rich Insurance Pojišťovna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Ubuntu&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index-css.css' %}">
+  <script src="https://kit.fontawesome.com/d40ad195f4.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <section id="navbar">
+    <div class="bs-example">
+      <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background-color: #0D1B4C;">
+        <a style="color: #F3ECC8;text-decoration: none; " href="/">
+          <font face="Gill" size=" 5">Rich Insurance</font><br />
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav">
+            <p style="
+            padding-left: 15px;
+        " class="nav-item nav-link active"></p>
+            <a href="/customer/customerclick" class="nav-item nav-link">Přihlásit/Registrovat</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+  <!-- TITLE -->
+  <section id="title">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1>Zdraví koupit nelze... <br> JISTOTU NAŠTĚSTÍ ANO.</h1>
+          <p>Vypusťte starosti "co bude když" a svěřte tyto otázky PROFESIONÁLŮM. <br> Zaregistrujte se a prohlédněte si nabídku přímo pro VÁS. </p>
+        </div>
+        <div class="col-lg-6">
+          <img class="title-image" src="{% static 'image/familysafe.jpeg' %}" alt="family" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container-features col-lg-4">
+          <i class="fas fa-heart fa-4x"></i>
+          <h3>Jsme LEADER na trhu <br> s pojištěním </h3>
+          <p><br> Budeme Vám krýt záda za každé situace</p>
+        </div>
+        <div class="container-features col-lg-4">
+          <i class="fas fa-bullseye fa-4x"></i>
+          <h3>Máte na VÝBĚR, ale v nabídce se neztratíte</h3>
+          <p><br>Široký, ale přehledný výběr produktů pro veškeré vaše potřeby</p>
+        </div>
+        <div class="container-features col-lg-4">
+          <i class="fas fa-check-circle fa-4x"></i>
+          <h3>Absolutní JISTOTA za Vaše peníze</h3>
+          <p>Vážíme si Vás a ačkoliv nejsme nejlevnější na trhu, nabízíme jen to nejlepší. Tak jak si ZASLOUŽÍTE</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NABÍDKY -->
+  <section id="offers">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="pokus container-features col-lg-6">
+          <h3>V životě záleží především na ... <br> ŽIVOTĚ a ZDRAVÍ. <br><br>
+            Jsme tu, abychom zajistili, že pokud se něco pokazí, nezůstanete bez prostředků</h3>
+        </div>
+        <div class="container-features col-lg-6">
+          <img class="life-image" src="{% static 'image/life.jpeg' %}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container-features col-lg-6">
+          <img class="car-image" src="{% static 'image/car.jpeg' %}" alt="">
+        </div>
+        <div class="pokus container-features col-lg-6">
+          <h3>Ačkoliv dnes frčí homeoffice,<br> chápeme, že BEZ VOZIDLA TO NEJDE <br><br>
+            Ať už se na silnici přihodí cokoliv, <br> NENECHÁME VÁS V TOM </h3>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="pokus container-features col-lg-6">
+          <h3>Základem každé rodiny je BEZPEČNÝ DOMOV <br><br>
+            Jelikož svět kolem nás si občas dělá co chce, jsme tu, abychom ZAJISTILI BEZPEČÍ VAŠEHO DOMOVA</h3>
+        </div>
+        <div class="container-features col-lg-6">
+          <img class="home-image" src="{% static 'image/home.webp' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCE -->
+  <section id="testimonials">
+    <div class="container-fluid">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <h2>Náš syn měl odmala zálibu v chemických pokusech. Díky Rich Insurance v tom může pokračovat v novém domově.</h2>
+            <img class="testimon-image1" src="{% static 'image/burned-house.jpeg' %}" alt="burned-house">
+            <em>Karel Jelimán, Teplice</em>
+          </div>
+          <div class="carousel-item">
+            <h2>Skočím jen pro pár rohlíků. S tímto jsem nechal své auto deset minut na parkovišti před Hypermarketem. Díky Rich Insurance mám teď na nové. </h2>
+            <img class="testimon-image2" src="{% static 'image/smashed-car.jpeg' %}" alt="car">
+            <em>Ralf Machršum, Aš</em>
+          </div>
+          <div class="carousel-item">
+            <h2>Před odletem jsem si stěžovala, jak těžké mám zavazadla. Ačkoliv chtěl zloděj určitě jen pomoci, doufám, že si uhnal kýlu.. Díky Rich Insurance jsem však prožila fajn dovolenou </h2>
+            <img class="testimon-image3" src="{% static 'image/stolen.jpeg' %}" alt="lady-profile">
+            <em>Blažka Beztašková, Pekelnice nad Čertovkou</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

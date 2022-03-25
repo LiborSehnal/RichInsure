@@ -1,0 +1,32 @@
+{% extends 'customer/customerbase.html' %}
+{% block content %}
+{%load static%}
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Historie dotazů</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <a class="btn btn-primary" href="ask-question" role="button">Nový dotaz</a>
+        <tr>
+          <th>Poř. číslo</th>
+          <th>Dotaz</th>
+          <th>Odpověď poradce</th>
+          <th> Datum dotazu</th>
+        </tr>
+      </thead>
+      {% for t in questions %}
+      <tr>
+        <td> {{ forloop.counter }}</td>
+        <td> {{t.description}}</td>
+        <td>{{t.admin_comment}}</td>
+        <td>{{t.asked_date}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

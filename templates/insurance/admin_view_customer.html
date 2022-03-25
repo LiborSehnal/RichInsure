@@ -1,0 +1,37 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Přehled zákazníků</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Jméno</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Adresa</th>
+            <th>Detail</th>
+            <th>Update</th>
+            <th>Smazat</th>
+          </tr>
+        </thead>
+        {% for c in customers %}
+        <tr>
+          <td> {{c.get_name}}</td>
+          <td> {{c.mail}}</td>
+          <td>{{c.mobile}}</td>
+          <td>{{c.address}}</td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'customer-detail' c.id  %}"><span class="glyphicon glyphicon-user"></span></a></td>
+          <td><a class="btn btn-primary btn-xs" href="{% url 'update-customer' c.id  %}"><span class="glyphicon glyphicon-retweet"></span></a></td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'delete-customer' c.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

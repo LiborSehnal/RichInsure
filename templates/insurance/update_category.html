@@ -1,0 +1,22 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+</head>
+
+<div class="inpage_block">
+  <h3 style="text-align:center;">Upravit kategorii</h3>
+  <div>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+      <label for="first_name">Kategorie</label>
+      {% render_field categoryForm.category_name class="form-control" %}
+      <input type="submit" value="Update">
+    </form>
+  </div>
+</div>
+
+  {% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'insurance/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="inpage_block">
+  <h2 style="text-align:center; color:#0D1B4C;">Přidat produkt</h2>
+  <form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="course_name">Kategorie</label>
+      {% render_field policyForm.category class="form-control" placeholder="" %}
+
+      <label for="course_name">Název produktu</label>
+      {% render_field policyForm.policy_name class="form-control" placeholder="" %}
+
+      <label for="course_name">Pojistné plnění</label>
+      {% render_field policyForm.sum_assurance class="form-control" placeholder="" %}
+
+      <label for="course_name">Měsíční platba</label>
+      {% render_field policyForm.premium class="form-control" placeholder="" %}
+      <br>
+      <button type="submit" class="btn btn-primary">Přidat</button>
+  </form>
+</div>
+{% endblock content %}

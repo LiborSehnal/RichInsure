@@ -1,0 +1,35 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Dotazy klientů</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Poř. číslo</th>
+            <th>Zákazník</th>
+            <th> Dotaz</th>
+            <th> Odpověď poradce</th>
+            <th> Datum dotazu</th>
+            <th> Odpovědět</th>
+          </tr>
+        </thead>
+        {% for t in questions %}
+        <tr>
+          <td> {{ forloop.counter }}</td>
+          <td> {{t.customer.get_name}}</td>
+          <td> {{t.description}}</td>
+          <td> {{t.admin_comment}}</td>
+          <td> {{t.asked_date}}</td>
+          <td><a class="btn btn-danger btn-xs" href="{% url 'update-question' t.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock content %}

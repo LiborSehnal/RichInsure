@@ -1,0 +1,33 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+</head>
+
+<div class="inpage_block">
+  <h3 style="text-align:center;">Upravit produkt</h3>
+  <div>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+      <label for="category">Kategorie</label>
+      {% render_field policyForm.category class="form-control" placeholder="Životní pojištění" %}
+
+      <label for="policy_name">Název produktu</label>
+      {% render_field policyForm.policy_name class="form-control" placeholder="Jméno produktu" %}
+
+      <label for="sum_assurance">Pojistné krytí</label>
+      {% render_field policyForm.sum_assurance class="form-control" placeholder="0" %}
+
+      <label for="premium">Měsíční platba</label>
+      {% render_field policyForm.premium class="form-control" placeholder="0" %}
+
+
+      <input type="submit" value="Update">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+
+</head>
+
+<div class="inpage_block">
+  <h3 style="text-align:center;">Reagovat na dotaz</h3>
+  <div>
+    <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+      <label for="course_name">Dotaz</label>
+      {% render_field questionForm.description class="form-control"%}
+
+      <label for="course_name">Váš komentář</label>
+      <input type="text" name="admin_comment" id="admin_comment" class="form-control">
+
+
+
+      <input type="submit" value="Odeslat">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

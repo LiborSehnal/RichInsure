@@ -1,0 +1,15 @@
+{% extends 'customer/customerbase.html' %}
+{% load widget_tweaks %}
+{%load static%}
+{% block content %}
+<h2 style="text-align:center; color:#0D1B4C;">Zapsat pojistnou událost</h2>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+  {%csrf_token%}
+  <div class="form-group">
+    {% render_field eventForm.policy class="form-control" placeholder="" %}
+    {% render_field eventForm.description class="form-control" placeholder="Zde napiště svůj dotaz" %}
+  </div>
+  <button type="submit" class="btn btn-primary">Odeslat</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'insurance/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{%load static%}
+<div class="inpage_block">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">Detail produktu</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <td>Zákazník</td>
+            <td>{{ events.customer.get_name }}</td>
+          </tr>
+          <tr>
+            <td>Pojištění</td>
+            <td>{{ events.policy }}</td>
+          </tr>
+          <tr>
+            <td>Datum nahlášení PU</td>
+            <td>{{ events.creation_date }}</td>
+          </tr>
+          <tr>
+            <td>Komentář klienta</td>
+            <td>{{ events.description }}</td>
+          </tr>
+      </table>
+      <div>
+        <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+          {% csrf_token %}
+          <label for="course_name">Váš komentář</label>
+          <input type="text" name="admin_comment" id="admin_comment" class="form-control">
+          <input type="submit" value="Odeslat">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

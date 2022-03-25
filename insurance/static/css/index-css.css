@@ -1,0 +1,147 @@
+/* index style */
+body {
+  background-color: black;
+}
+
+h1 {
+  color: #F3ECC8;
+  font-size: 2rem;
+  font-family: Ubuntu;
+  line-height: 1.5;
+  font-weight: bold;
+  padding-top: 150px;
+}
+
+h2 {
+  color: #00B4D8;
+  font-size: 3rem;
+  font-family: Ubuntu;
+
+  padding-left: 150px;
+}
+
+
+.title-image {
+  text-align: center;
+  width: 80%;
+  margin-left: 150px;
+  border-radius: 50%;
+
+}
+
+.container-fluid {
+  padding: 3% 15%;
+}
+
+#title {
+  padding-bottom: 50px;
+}
+
+/* NAVBAR */
+
+.navbar-brand {
+  font-size: 3rem;
+  line-height: 2.5;
+  font-family: Ubuntu;
+}
+
+
+.nav-item {
+  padding: 0 18px;
+
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: #00B4D8;
+}
+
+
+
+
+/* Features */
+#features {
+  color: #78C2C3;
+  padding-top: 150px;
+}
+
+.container-features{
+  padding: 5%;
+  font-family: Ubuntu;
+  text-align: center;
+}
+
+#features p {
+  color: #F3ECC8;
+}
+
+/* Offers */
+
+#offers {
+background-color: #78C2C3;
+}
+
+.pokus {
+  color: #0D1B4C;
+  display: flex;
+}
+
+.pokus h3 {
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+
+}
+
+.life-image{
+  border-radius: 50%;
+}
+
+.car-image{
+  border-radius: 50%;
+}
+
+.home-image{
+  height: 80%;
+  border-radius: 50%;
+}
+
+/* Testimon */
+
+#testimonials {
+  padding-top: 100px;
+
+
+}
+
+.carouselExampleSlidesOnly {
+  display: flex;
+}
+
+h2{
+  font-size: 1.2rem;
+  color: #0D1B4C;
+  padding-bottom: 50px;
+}
+
+.testimon-image1 {
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.testimon-image2 {
+  width: 50%;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.testimon-image3 {
+  height: 30%;
+  border-radius: 50%;
+  align-items: center;
+}
+
+em{
+  color: #0D1B4C;
+}
