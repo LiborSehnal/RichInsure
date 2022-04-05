@@ -26,11 +26,11 @@ def home_view(request):
         return HttpResponseRedirect('afterlogin')
     return render(request, 'insurance/index.html')
 
-
+# ověření autentikace
 def is_customer(user):
     return user.groups.filter(name='CUSTOMER').exists()
 
-
+# přesměrování na admin/user sekci
 def afterlogin_view(request):
     if is_customer(request.user):
         return redirect('customer/customer-dashboard')
@@ -43,7 +43,7 @@ def adminclick_view(request):
         return HttpResponseRedirect('afterlogin')
     return HttpResponseRedirect('adminlogin')
 
-
+# admin base view - DASHBOARD. Načte nástěnku, ukáže základní menu + počty
 @login_required(login_url='adminlogin')
 def admin_dashboard_view(request):
     dict = {
@@ -61,13 +61,13 @@ def admin_dashboard_view(request):
 
 
 #  UPRAVIT ADMIN-CUSTOMER ClASS
-
+# admin pohled na zákazníky
 @login_required(login_url='adminlogin')
 def admin_view_customer_view(request):
     customers = CMODEL.Customer.objects.all()
     return render(request, 'insurance/admin_view_customer.html', {'customers': customers})
 
-
+# admin pohled na detail zákazníka
 @login_required(login_url='adminlogin')
 def admin_customer_detail_view(request, pk):
     customers = CMODEL.Customer.objects.get(id=pk)
@@ -77,7 +77,7 @@ def admin_customer_detail_view(request, pk):
     total_sum_number = total_sum['sum']
     return render(request, 'insurance/customer_detail.html', {'customers': customers, "user": user, "policy": policy, 'totalsum': total_sum_number})
 
-
+# admin update karty zákazníka + konkrétních produktů
 @login_required(login_url='adminlogin')
 def update_customer_view(request, pk):
     customer = CMODEL.Customer.objects.get(id=pk)
@@ -96,7 +96,7 @@ def update_customer_view(request, pk):
             return redirect('admin-view-customer')
     return render(request, 'insurance/update_customer.html', context=mydict)
 
-
+# admin vymazání zákazníka
 @login_required(login_url='adminlogin')
 def delete_customer_view(request, pk):
     customer = CMODEL.Customer.objects.get(id=pk)
@@ -107,7 +107,7 @@ def delete_customer_view(request, pk):
 
 
 # PŘIDAT CATEGORY CLASS
-
+# přidání kategorie produktů
 def admin_add_category_view(request):
     categoryForm = forms.CategoryForm()
     if request.method == 'POST':
@@ -117,18 +117,18 @@ def admin_add_category_view(request):
             return redirect('admin-view-category')
     return render(request, 'insurance/admin_add_category.html', {'categoryForm': categoryForm})
 
-
+# přehled kategorií
 def admin_view_category_view(request):
     categories = models.Category.objects.filter().order_by('category_name')
     return render(request, 'insurance/admin_view_category.html', {'categories': categories})
 
-
+# vymazání kategorie
 def delete_category_view(request, pk):
     category = models.Category.objects.get(id=pk)
     category.delete()
     return redirect('admin-view-category')
 
-
+# update kategorie
 @login_required(login_url='adminlogin')
 def update_category_view(request, pk):
     category = models.Category.objects.get(id=pk)
@@ -143,13 +143,13 @@ def update_category_view(request, pk):
 
 # PŘÍDAT PRODUCT CLASS
 
-
+# detail vytvořeného pojištění
 def admin_policy_detail_view(request, pk):
     policy = models.Policy.objects.get(id=pk)
     policyForm = forms.PolicyForm(instance=policy)
     return render(request, 'insurance/admin_view_policy_detail.html', {"policy": policy, 'policyForm': policyForm})
 
-
+# přidání nového pojištění
 def admin_add_policy_view(request):
     policyForm = forms.PolicyForm()
 
@@ -165,7 +165,7 @@ def admin_add_policy_view(request):
             return redirect('admin-view-policy')
     return render(request, 'insurance/admin_add_policy.html', {'policyForm': policyForm})
 
-
+# celkový přehled pojištění
 def admin_view_policy_view(request):
     policies = models.Policy.objects.filter().order_by('category', 'sum_assurance')
     return render(request, 'insurance/admin_view_policy.html', {'policies': policies})
@@ -195,7 +195,7 @@ def update_policy_view(request, pk):
             return redirect('admin-view-policy')
     return render(request, 'insurance/update_policy.html', {'policyForm': policyForm})
 
-
+# update pojištění zákazníka
 @login_required(login_url='adminlogin')
 def update_policy_customer_view(request, pk):
     policy = models.PolicyRecord.objects.get(id=pk)
@@ -215,34 +215,34 @@ def update_policy_customer_view(request, pk):
             return redirect('admin-view-customer')
     return render(request, 'insurance/admin_update_policy_customer.html', {'policyForm': policyForm})
 
-
+# vymazání pojištění - obecné
 def delete_policy_view(request, pk):
     policy = models.Policy.objects.get(id=pk)
     policy.delete()
     return redirect('admin-view-policy')
 
-
+# vymazání pojištění - zákazník
 def delete_user_policy_view(request, pk):
     policy = models.PolicyRecord.objects.get(id=pk)
     policy.delete()
     return redirect('admin-view-customer')
 
-
+# výpis pojištění konkrétního zákazníka
 def admin_view_policy_holder_view(request):
     policyrecords = models.PolicyRecord.objects.all().filter(status='Pending')
     return render(request, 'insurance/admin_view_policy_holder.html', {'policyrecords': policyrecords})
 
-
+# schválené produkty
 def admin_view_approved_policy_holder_view(request):
     policyrecords = models.PolicyRecord.objects.all().filter(status='Approved')
     return render(request, 'insurance/admin_view_approved_policy_holder.html', {'policyrecords': policyrecords})
 
-
+# odmítnuté produkty
 def admin_view_disapproved_policy_holder_view(request):
     policyrecords = models.PolicyRecord.objects.all().filter(status='Disapproved')
     return render(request, 'insurance/admin_view_disapproved_policy_holder.html', {'policyrecords': policyrecords})
 
-
+# žádosti o pojištění čekající na schválení
 def admin_view_waiting_policy_holder_view(request):
     policyrecords = models.PolicyRecord.objects.all().filter(status='Pending')
     return render(request, 'insurance/admin_view_waiting_policy_holder.html', {'policyrecords': policyrecords})
@@ -262,10 +262,12 @@ def disapprove_request_view(request, pk):
     return redirect('admin-view-policy-holder')
 
 # PŘÍDAT EVENTS CLASS
+# přehled pojistných událostí
 def admin_events_view(request):
     events = models.InsuranceEventRecord.objects.all().order_by('status')
     return render(request, 'insurance/admin_view_events.html', {'events': events})
 
+# detail konkrétní pojistné události
 def admin_event_detail_view(request, pk):
     events = models.InsuranceEventRecord.objects.get(id=pk)
     eventForm = forms.EventAnswerForm(instance=events)
@@ -282,14 +284,14 @@ def admin_event_detail_view(request, pk):
             return redirect('event-view')
     return render(request, 'insurance/admin_event_detail_view.html', {"events": events, 'eventForm': eventForm})
 
-
+# potvrzení zpracování PU
 def accept_event(request, pk):
     eventrecords = models.InsuranceEventRecord.objects.get(id=pk)
     eventrecords.status = 'Přijato'
     eventrecords.save()
     return redirect('event-view')
 
-
+# uzavření PU
 def close_event(request, pk):
     eventrecords = models.InsuranceEventRecord.objects.get(id=pk)
     eventrecords.status = 'Uzavřeno'
@@ -298,11 +300,13 @@ def close_event(request, pk):
 
 
 # PŘIDAT QUESTIONS CLASS
+
+# celkový přehled dotazů
 def admin_question_view(request):
     questions = models.Question.objects.all().order_by('asked_date')
     return render(request, 'insurance/admin_question.html', {'questions': questions})
 
-
+# odpověď na dotaz
 def update_question_view(request, pk):
     question = models.Question.objects.get(id=pk)
     questionForm = forms.QuestionForm(instance=question)
@@ -322,6 +326,8 @@ def update_question_view(request, pk):
 
 
 # PŘIDAT STATISTICS CLASS
+
+# statistika - přehled
 def admin_view_stats(request):
     total_user = CMODEL.Customer.objects.all().count()
     total_policy = models.Policy.objects.all().count()
@@ -336,7 +342,7 @@ def admin_view_stats(request):
                                                                'total_category': total_category, 'average_products_customer': average_products_customer,
                                                                'total_events': total_events})
 
-
+# generování PDF s kontakty klientů
 def admin_generate_clients(request):
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
@@ -364,7 +370,7 @@ def admin_generate_clients(request):
 
     return FileResponse(buf, as_attachment=True, filename='report.pdf')
 
-
+# generování statistik pojišťovny
 def admin_generate_stats(request):
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
